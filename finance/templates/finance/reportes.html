@@ -1,0 +1,76 @@
+{% extends 'core/base_finance.html' %} 
+{% load static %}
+{% block title %}Reportes{% endblock %}
+{% block estiloextras %}
+<link rel="stylesheet" href="{% static 'core/css/table.css' %}">
+{% endblock %}
+{% block content %}
+<h1 class="titulo">Reportes</h1>
+			<hr>
+			<div class="contenedor-table">
+				<form action="" method="get">
+					<div class="barra-busqueda">
+						<input type="text" placeholder="Buscar"  name="buscar">
+						<button type="submit"><i class="fas fa-search"></i></button>
+					</div>
+				</form>
+				{% if page_obj %}
+					<table border="1">
+						<thead class="encabezado-table">
+							<tr>
+								<th>Matricula</th>
+								<th>Nombre</th>
+								<th>Carrera</th>
+								<th>Monto Adeudo</th>
+								<th>Limite</th>
+								<th>Realizar Cobro</th>
+							</tr>
+						</thead>
+						<tbody>
+							
+							{% for pagos in page_obj %}
+							{% if pagos.estado != "Completado" %}
+							<tr>
+								<td data-label="Matricula:" >{{pagos.clave_alumno.matricula}}</td>
+								<td data-label="Nombre:" >{{pagos.clave_alumno.nombre}}</td>
+								<td data-label="Carrera:" >{{pagos.clave_alumno.clave_carrera.nombre_carrera}}</td>
+								
+								<td data-label="Monto Adeudo:" >${{pagos.monto_adeudo}}</td>
+								<td data-label="Limite" >{{pagos.proximo_pago}}</td>
+								<td data-label="Realizar Cobro:" >
+									<a href="{% url 'chargeadd_finance' pagos.id %}" style="color: white;">
+										Cobrar
+										<i class="fas fa-file-invoice-dollar fa-lg"></i>
+									</a>
+								</td>
+							</tr>
+							{% endif %}
+							{% endfor %}
+						
+						</tbody>
+						
+					</table>
+					{% else %}
+						<h1>No Existen Adeudos</h1>
+					{% endif %}
+
+					<div class="pagination">
+						<span class="step-links">
+							{% if page_obj.has_previous %}
+								<a class="paginador" href="?page=1">&laquo; Primero</a>
+								<a class="paginador" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+							{% endif %}
+					
+							<span class="current">
+								Pagina {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+							</span>
+					
+							{% if page_obj.has_next %}
+								<a class="paginador" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+								<a class="paginador" href="?page={{ page_obj.paginator.num_pages }}">Ultima &raquo;</a>
+							{% endif %}
+						</span>
+					</div>
+	
+				</div>
+{% endblock %}

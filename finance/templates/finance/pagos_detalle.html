@@ -1,0 +1,48 @@
+{% extends 'core/base_finance.html' %} 
+{% load static %}
+{% block title %}Pagos{% endblock %}
+{% block estiloextras %}
+<link rel="stylesheet" href="{% static 'core/css/forms-style.css' %}">
+{% endblock %}
+{% block content %}
+<h1 class="titulo">Pagos</h1>
+			<hr>
+			<a class="cancelar-pago" href="{% url 'payments_finance' %}">Regresar</a>
+			<div class="container">
+				<form action="#">
+					<div class="form-row">
+						<div class="input-data">
+							<input type="text" disabled value="{{detalle_pago.clave_alumno.matricula}}">
+							<div class="underline">
+							</div>
+							<label for="">Matricula</label>
+						</div>
+						<div class="input-data">
+							<input type="text" disabled value="{{detalle_pago.clave_alumno.nombre}}">
+							<label for="">Nombre</label>
+						</div>
+					</div>
+				<div class="form-row">
+					<div class="input-data">
+						<input type="text" disabled value="{{detalle_pago.clave_pago.tipo_pago}}">
+						<div class="underline">
+							
+						</div>
+						<label for="">Pago Realizado</label>
+					</div>
+					<div class="input-data">
+						<input type="text" disabled value="{{detalle_pago.clave_pago.monto}}">
+						<div class="underline">
+							
+						</div>
+						<label for="">Total Pagado</label>
+					</div>
+				</div>
+				
+					
+				</div>
+				
+					</form>
+				</div>
+			</div>
+{% endblock %}

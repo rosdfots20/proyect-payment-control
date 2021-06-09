@@ -1,0 +1,63 @@
+{% extends 'core/base_finance.html' %} 
+{% load static %}
+{% block title %}Pagos{% endblock %}
+{% block estiloextras %}
+<link rel="stylesheet" href="{% static 'core/css/forms-style.css' %}">
+{% endblock %}
+{% block content %}
+<h1 class="titulo">Pagos</h1>
+			<hr>
+			<a class="cancelar-pago" href="{% url 'student_finance' %}">Cancelar</a>
+			<div class="container">
+				<form method="POST" action="">
+					{% csrf_token %}
+					<div class="form-row">
+						<div class="input-data">
+							<input type="text" disabled value="{{students.user}}">
+							<div class="underline">
+							</div>
+							<label for="">Matricula</label>
+						</div>
+						<div class="input-data">
+							<input type="text" disabled value="{{students.nombre}}">
+							<label for="">Nombre</label>
+						</div>
+					</div>
+
+				<div class="form-row">
+
+					<div class="input-data">
+						<div class="underline">
+							
+						</div>
+						<select name="pago_tipo" id="pago_tipo" required>
+							<option label="Selecionar Pago"></option>
+							{% for j in tipo_pago %}
+							<option value="{{j.id}}">{{j.tipo_pago}}-${{j.monto}}</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div class="input-data">
+						<div class="underline">
+							
+						</div>
+						<select name="pago_opcion" id="pago_opcion"  required>
+							<option label="Selecionar opcion de pago"></option>
+							<option value="true">Pago a Intereses</option>
+							<option value="false">Pago a Contado</option>
+						</select>
+					</div>
+				</div>
+
+				
+					  <div class="form-row submit-btn">	
+						  <div class="input-data">
+							  <div class="inner"></div>
+							  <input type="submit" value="Siguiente">
+							</div>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+{% endblock %}

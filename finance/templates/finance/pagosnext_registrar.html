@@ -1,0 +1,50 @@
+{% extends 'core/base_finance.html' %} 
+{% load static %}
+{% block title %}Pagos{% endblock %}
+{% block estiloextras %}
+<link rel="stylesheet" href="{% static 'core/css/forms-style.css' %}">
+{% endblock %}
+{% block content %}
+<h1 class="titulo">Pagos</h1>
+			<hr>
+			<div class="container">
+				<form method="POST" action="">
+					{% csrf_token %}
+					<div class="form-row">
+						<div class="input-data">
+							<input type="text" disabled value="{{pagoSelect.monto}}">
+							<div class="underline">
+							</div>
+							<label for="">Total Pago</label>
+						</div>
+						<div class="input-data">
+							<input name="pago_efectivo" id="pago_efectivo" type="number" required>
+							<div class="underline">
+							</div>
+							<label for="">Pago en Efectivo</label>
+						</div>
+					</div>
+					{% if data_tramite.pago_parcial == "true" %}
+					<div class="form-row">
+						<div class="input-data">
+							<input type="date" name="fecha_plazo" required">
+							<div class="underline">
+							</div>
+							<label for="">Fecha Proximo Pago</label>
+						</div>
+					</div>
+					{% endif %}
+					<!-- {% for message in messages %}
+					<p id="messages">{{message}}</p>
+					{% endfor %} -->
+					  <div class="form-row submit-btn">	
+						  <div class="input-data">
+							  <div class="inner"></div>
+							  <input type="submit" value="Generar Reporte">
+							</div>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+{% endblock %}

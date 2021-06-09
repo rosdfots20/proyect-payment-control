@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'core/css/home.css' %}" />
+    <title>Universidad los Angeles</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <img src="{% static 'core/img/Angeles.png' %}" alt="logo" />
+        <h3 class="logo">Universidad de los Angeles</h3>
+      <nav>
+        <u1 class="nav-links">
+          <a href="{% url 'login' %}">
+            <button class="cta-select">Iniciar Sesion</button>
+          </a>
+        </u1>
+      </nav>
+      </div>
+      
+    </header>
+    <main>
+      <section class="presentation">
+        <div class="introduction">
+          <div class="intro-text">
+            <h1>Somos la universidad para construir tu futuro</h1>
+            <p>
+              The new 14 inch bezeless display oferring a 4k display with touch
+              screen.
+            </p>
+          </div>
+        </div>
+
+          <div class="slide-contenedor">
+            <div class="miSlider fade">
+                <img src="{% static 'core/img/uno.jpeg' %}" alt="">
+            </div>
+            <div class="miSlider fade">
+                <img src="{% static 'core/img/dos.jpeg' %}" alt="">
+            </div>
+            <div class="miSlider fade">
+                <img src="{% static 'core/img/tres.jpeg' %}" alt="">
+            </div>
+            <div class="direcciones">
+                <a href="#" class="atras" onclick="avanzaSlide(-1)">&#10094;</a>
+                <a href="#" class="adelante" onclick="avanzaSlide(1)">&#10095;</a>
+            </div>
+            <div class="barras">
+                <span class="barra active" onclick="posicionSlide(1)"></span>
+                <span class="barra" onclick="posicionSlide(2)"></span>
+                <span class="barra" onclick="posicionSlide(3)"></span>
+            </div>
+        
+        </div>
+      </section>
+    </main>
+
+    <footer >
+      <div class="container">
+        <div class="footer-col">
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{% static 'core/js/slider.js' %}"></script>
+  </body>
+</html>

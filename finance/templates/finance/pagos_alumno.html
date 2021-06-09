@@ -1,0 +1,40 @@
+{% extends 'core/base_perfil.html' %} 
+{% load static %}
+{% block title %}Pagos Alumno{% endblock %}
+{% block estiloextras %}
+<link rel="stylesheet" href="{% static 'core/css/table.css' %}">
+{% endblock %}
+{% block content %}
+<h1 class="titulo">Pagos</h1>
+			<hr>
+			<div class="contenedor-table">
+					
+				{% if pagos %}
+				<table border="1">
+					<thead class="encabezado-table">
+						<tr>
+							<th>Descripcion</th>
+							<th>Pago Total</th>
+							<th>Fecha</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for i in pagos %}
+						{% if i.estado == "Completado" %}
+						<tr>
+							<td data-label="Descripcion:" >{{i.clave_pago.tipo_pago}}</td>
+							<td data-label="Pago Total:" >{{i.clave_pago.monto}}</td>
+							<td data-label="Fecha pago:" >{{i.fecha_tramitado}}</td>
+						</tr>
+						{% endif %}
+						
+						{% endfor %}
+					</tbody>
+					
+				</table>
+				{% else %}
+				<h4>No Tiene Ningun Pago</h4>
+				{% endif %}
+
+			</div>
+{% endblock %}

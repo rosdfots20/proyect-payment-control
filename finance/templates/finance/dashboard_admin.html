@@ -1,0 +1,26 @@
+{% extends 'core/base_finance.html' %} 
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1 class="titulo">Panel De Control</h1>
+			<hr>
+			<div class="grid-videos">
+				<a href="{% url 'student_finance' %}" class="video">
+					<div class="button-panel">
+						<div><i style="color: white;" class="fas fa-user fa-7x"></i></i></div>
+						<h3>Estudiantes</h3>
+					</div>
+				</a>
+				<a href="{% url 'payments_finance' %}" class="video">
+					<div class="button-panel">
+						<div><i style="color: white;" class="fas fa-dollar-sign fa-7x"></i></i></div>
+						<h3>Pagos</h3>
+					</div>
+				</a>
+				<a href="{% url 'report_finance' %}" class="video">
+					<div class="button-panel">
+						<div><i style="color: white;" class="fas fa-clipboard-list fa-7x"></i></i></div>
+						<h3>Reporte</h3>
+					</div>
+				</a>
+			</div>
+{% endblock %}

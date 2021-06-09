@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0"
+    />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="{% static 'core/css/login.css' %}" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'core/css/toast.css' %}">
+	  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  </head>
+  <body>
+    {% if messages %}
+			{% for message in messages %}
+				{% if message.tags == 'success' %}
+					<div class="correct hide">
+						<span class="fas fa-check"></span>
+						<span class="msg">{{message}}</span>
+						<div class="close-btn">
+						  <span class="fas fa-times"></span>
+						</div>
+					</div>
+				{% endif %}
+				{% if message.tags == 'info' %}
+					<div class="alert hide">
+						<span class="fas fa-exclamation-circle"></span>
+						<span class="msg">{{message}}</span>
+						<div class="close-btn">
+						  <span class="fas fa-times"></span>
+						</div>
+					</div>
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+    <form class="formulario" method="POST" action="">
+      {% csrf_token %}
+      <h1>Iniciar Sesion</h1>
+      <div class="contenedor">
+        <div class="input-contenedor">
+          <i class="fas fa-user icon"></i>
+          <input name="username" type="text" placeholder="Nombre"/>
+        </div>
+        <div class="input-contenedor">
+          <i class="fas fa-key icon"></i>
+          <input name="password" type="password" placeholder="Contraseña"/>
+        </div>
+        <div>
+            <input type="submit" value="Iniciar Sesion" class="button"/>
+            <a class="button" href="{% url 'reset_password' %}">Olvide contraseña</a>
+        </div>
+      </div>
+    </form>
+    <script src="{% static 'core/js/toast.js' %}"></script>
+  </body>
+</html>

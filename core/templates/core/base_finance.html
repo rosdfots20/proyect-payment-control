@@ -1,0 +1,80 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>{% block title %}{% endblock %} | </title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="{% static 'core/css/normalize.css' %}">
+	<link rel="stylesheet" href="{% static 'core/css/estilos.css' %}">
+	<link rel="stylesheet" href="{% static 'core/css/toast.css' %}">
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	{% block estiloextras %}{% endblock %}
+</head>
+<body>
+	<div class="contenedor active" id="contenedor">
+		<header class="header">
+			<div class="contenedor-logo">
+				<button id="boton-menu" class="boton-menu"><i style="color: white;" class="fas fa-bars fa-2x"></i></button>
+				<a href="#" class="logo"><img class="logo-menu" src="{% static 'core/img/Angeles.png' %}" alt=""></a>
+			</div>
+			<div class="botones-header">
+				<p class="name-user">{{perfil.nombre}}</p>
+				<ul class="menu">
+					<li>
+						<a href="#" class="avatar"><img src="{% static 'core/img/avatar.jpg' %}" alt=""></a>
+						<ul class="submenu">
+							<li><a href="{% url 'password_finance' %}">Cambiar Contraseña</a></li>
+							<hr>
+							<li><a href="{% url 'logout' %}">Cerrar Sesion</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</header>
+
+		<nav class="menu-lateral">
+			<hr>
+			<a href="{% url 'home_finance' %}"><i style="color: white;" class="icon-stile fas fa-boxes fa-lg"></i> Panel De Control</a>
+			<hr>
+			<a href="{% url 'student_finance' %}"><i style="color: white;" class="fas fa-user fa-lg"></i> Estudiantes</a>
+			<hr>
+			<a href="{% url 'payments_finance' %}"><i style="color: white;" class="fas fa-credit-card fa-lg"></i> Pagos</a>
+			<hr>
+			<a href="{% url 'report_finance' %}"><i style="color: white;" class="fas fa-file-invoice fa-lg"></i> Reportes</a>
+			<hr>
+		</nav>
+		{% if messages %}
+			{% for message in messages %}
+				{% if message.tags == 'success' %}
+					<div class="correct hide">
+						<span class="fas fa-check"></span>
+						<span class="msg">{{message}}</span>
+						<div class="close-btn">
+						  <span class="fas fa-times"></span>
+						</div>
+					</div>
+				{% endif %}
+				{% if message.tags == 'info' %}
+					<div class="alert hide">
+						<span class="fas fa-exclamation-circle"></span>
+						<span class="msg">{{message}}</span>
+						<div class="close-btn">
+						  <span class="fas fa-times"></span>
+						</div>
+					</div>
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+		<main class="main">
+			{% block content %}{% endblock %}
+		</main>
+	</div>
+	<script src="{% static 'core/js/toast.js' %}"></script>
+	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+	<script src="{% static 'core/js/main.js' %}"></script>
+</body>
+</html>
