@@ -1,67 +1,8 @@
-{% extends 'core/base_finance.html' %} 
+{% extends 'core/base_finance2.html' %} 
 {% load static %}
 {% block title %}Estudiantes{% endblock %}
-{% block estiloextras %}
-<link rel="stylesheet" href="{% static 'core/css/table.css' %}">
-{% endblock %}
 
-
-{% block content %}
-<h1 class="titulo">Estudiantes</h1>
-			<hr>
-			<h2 class="titulo">Administrar Informacion De Los Estudiantes</h2>
-			<a class="cancelar-pago" href="{% url 'studentadd_finance' %}">Agregar Estudiante <i class="fas fa-user-plus"></i></a>
-
-			<div class="contenedor-table">
-				<form action="" method="get">
-					<div class="barra-busqueda">
-						<input type="text" placeholder="Buscar" name="buscar">
-						<button type="submit"><i class="fas fa-search"></i></button>
-					</div>
-				</form>
-			{% if page_obj %}
-
-				<table border="1">
-					<thead class="encabezado-table">
-						<tr>
-							<th>Matricula</th>
-							<th>Nombre</th>
-							<th>Carrera</th>
-							<th>Perfil</th>
-							<!-- <th>Grado</th>
-							<th>Grupo</th> -->
-							<th>Registrar Pago</th>
-						</tr>
-					</thead>
-					<tbody>
-						
-						
-					</tbody>
-					
-				</table>
-				{% else %}
-					<h1>No Hay Registros De Alumnos</h1>
-				{% endif %}
-
-				<div class="pagination">
-					<span class="step-links">
-						{% if page_obj.has_previous %}
-							<a class="paginador" href="?page=1">&laquo; Primero</a>
-							<a class="paginador" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
-						{% endif %}
-				
-						<span class="current">
-							Pagina {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
-						</span>
-				
-						{% if page_obj.has_next %}
-							<a class="paginador" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
-							<a class="paginador" href="?page={{ page_obj.paginator.num_pages }}">Ultima &raquo;</a>
-						{% endif %}
-					</span>
-				</div>
-			</div>
-{% endblock %}
+{% block titleheader %}Estudiantes{% endblock %}
 
 
 {% block content %}

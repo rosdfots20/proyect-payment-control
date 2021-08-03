@@ -1,33 +1,30 @@
-{% extends 'core/base_finance.html' %} 
+{% extends 'core/base_finance2.html' %} 
 {% load static %}
 {% block title %}Reportes{% endblock %}
-{% block estiloextras %}
-<link rel="stylesheet" href="{% static 'core/css/table.css' %}">
-{% endblock %}
+{% block titleheader %}Reportes{% endblock %}
+
 {% block content %}
-<h1 class="titulo">Reportes</h1>
-			<hr>
-			<div class="contenedor-table">
-				<form action="" method="get">
-					<div class="barra-busqueda">
-						<input type="text" placeholder="Buscar"  name="buscar">
-						<button type="submit"><i class="fas fa-search"></i></button>
-					</div>
-				</form>
-				{% if page_obj %}
-					<table border="1">
-						<thead class="encabezado-table">
+<div class="recent-grid">
+	<div class="projects">
+		<div class="card">
+			<div class="card-header">
+				<h3>Administrar Pagos</h3>
+				
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					{% if page_obj %}
+					<table width="100%">
+						<thead>
 							<tr>
-								<th>Matricula</th>
-								<th>Nombre</th>
-								<th>Carrera</th>
-								<th>Monto Adeudo</th>
-								<th>Limite</th>
-								<th>Realizar Cobro</th>
+								<td>Matricula</td>
+								<td>Nombre</td>
+								<td>Nombre Pago</td>
+								<th>Fecha</th>
+								<th>Opción</th>
 							</tr>
 						</thead>
 						<tbody>
-							
 							{% for pagos in page_obj %}
 							{% if pagos.estado != "Completado" %}
 							<tr>
@@ -38,17 +35,13 @@
 								<td data-label="Monto Adeudo:" >${{pagos.monto_adeudo}}</td>
 								<td data-label="Limite" >{{pagos.proximo_pago}}</td>
 								<td data-label="Realizar Cobro:" >
-									<a href="{% url 'chargeadd_finance' pagos.id %}" style="color: white;">
-										Cobrar
-										<i class="fas fa-file-invoice-dollar fa-lg"></i>
-									</a>
+									<a href="{% url 'chargeadd_finance' pagos.id %}" class="la la-file-invoice la-2x"></a>
 								</td>
 							</tr>
 							{% endif %}
 							{% endfor %}
-						
+							
 						</tbody>
-						
 					</table>
 					{% else %}
 						<h1>No Existen Adeudos</h1>
@@ -71,6 +64,12 @@
 							{% endif %}
 						</span>
 					</div>
-	
 				</div>
+			</div>
+		</div>
+	</div>
+
+   
+	
+</div>
 {% endblock %}
