@@ -27,19 +27,19 @@
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="{% url 'home_student' %}">
+                    <a href="{% url 'home_student' %}" class="{% if request.path == '/student/' %}active{% endif %}">
                         <span class="las la-igloo"></span>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'pagos_student' %}">
+                    <a href="{% url 'pagos_student' %}" class="{% if request.path == '/student/pagos/' %}active{% endif %}">
                         <span class="las la-clipboard-list"></span>
                         <span>Pagos</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'password_student' %}">
+                    <a href="{% url 'password_student' %}" class="{% if request.path == '/student/reset_password/' %}active{% endif %}">
                         <span class="las la-user-circle"></span>
                         <span>Cambiar contraseña</span>
                     </a>
