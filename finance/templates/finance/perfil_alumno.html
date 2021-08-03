@@ -1,12 +1,8 @@
-{% extends 'core/base_perfil.html' %} 
+{% extends 'core/base_perfil2.html' %} 
 {% load static %}
 {% block title %}Dashboard Alumno{% endblock %}
-{% block estiloextras %}
-<link rel="stylesheet" href="{% static 'core/css/table.css' %}">
-{% endblock %}
+{% block titleheader %}Estado De Cuenta {% endblock %}
 {% block content %}
-<h1 class="titulo">Estado De Cuenta</h1>
-			<hr>
 			<h3 class="text-datos">Nombre: {{alumno_perfil.nombre}} {{alumno_perfil.apellido}}</h3>
 			<h4 class="text-datos">Carrera: {{alumno_perfil.clave_carrera.nombre_carrera}} &nbsp; Grado: {{grupoAcade.last.clave_grupo.grado}}  &nbsp; Grupo: {{grupoAcade.last.clave_grupo.grupo}}</h4>
 			<h4 class="text-datos">Estatus: {{alumno_perfil.estatus}}</h4>
