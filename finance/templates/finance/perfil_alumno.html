@@ -1,4 +1,4 @@
-{% extends 'core/base_perfil2.html' %} 
+{% extends 'core/base_perfil.html' %} 
 {% load static %}
 {% block title %}Dashboard Alumno{% endblock %}
 {% block titleheader %}Estado De Cuenta {% endblock %}
@@ -26,7 +26,7 @@
 						</tr>
 						{% endfor %}
 					</tbody>
-					
+
 				</table>
 				{% else %}
 				<h4>Excluido De Algun Grupo</h4>
@@ -55,7 +55,7 @@
 						{% endif %}
 						{% endfor %}
 					</tbody>
-					
+
 				</table>
 				{% else %}
 				<h4>No tiene Adeudos</h4>

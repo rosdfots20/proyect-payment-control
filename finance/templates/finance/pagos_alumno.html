@@ -1,4 +1,4 @@
-{% extends 'core/base_perfil2.html' %} 
+{% extends 'core/base_perfil.html' %} 
 {% load static %}
 {% block title %}Pagos Alumno{% endblock %}
 {% block titleheader %}Pagos {% endblock %}
@@ -9,7 +9,7 @@
 		<div class="card">
 			<div class="card-header">
 				<h3>Administrar Pagos</h3>
-				
+
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
@@ -31,7 +31,7 @@
 									<td data-label="Fecha pago:" >{{i.fecha_tramitado}}</td>
 								</tr>
 								{% endif %}
-								
+
 								{% endfor %}
 							</tbody>
 					</table>

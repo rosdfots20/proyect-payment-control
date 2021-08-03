@@ -1,4 +1,4 @@
-{% extends 'core/base_finance2.html' %} 
+{% extends 'core/base_finance.html' %}
 {% load static %}
 {% block title %}Estudiantes{% endblock %}
 {% block titleheader %}Estudiantes{% endblock %}
@@ -28,14 +28,14 @@
 					<div class="input-data">
 						{{form.last_name}}
 						<div class="underline">
-							
+
 						</div>
 						<label for="">Apellidos</label>
 					</div>
 					<div class="input-data">
 						{{form.email}}
 						<div class="underline">
-							
+
 						</div>
 						<label for="">Email</label>
 					</div>
@@ -44,20 +44,20 @@
 					<div class="input-data">
 						{{form.password1}}
 						<div class="underline">
-							
+
 						</div>
 						<label for="">Contraseña</label>
 					</div>
 					<div class="input-data">
 						{{form.password2}}
 						<div class="underline">
-							
+
 						</div>
 						<label for="">Repetir Contraseña</label>
 					</div>
 				</div>
 				{{form.errors}}
-					  <div class="form-row submit-btn">	
+					  <div class="form-row submit-btn">
 						  <div class="input-data">
 							  <div class="inner"></div>
 							  <input type="submit" value="Siguiente">

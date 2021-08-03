@@ -1,4 +1,4 @@
-{% extends 'core/base_finance2.html' %} 
+{% extends 'core/base_finance.html' %} 
 {% load static %}
 {% block title %}Reportes{% endblock %}
 {% block titleheader %}Reportes{% endblock %}
@@ -9,7 +9,7 @@
 		<div class="card">
 			<div class="card-header">
 				<h3>Administrar Pagos</h3>
-				
+
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
@@ -31,7 +31,7 @@
 								<td data-label="Matricula:" >{{pagos.clave_alumno.matricula}}</td>
 								<td data-label="Nombre:" >{{pagos.clave_alumno.nombre}}</td>
 								<td data-label="Nombre Pago:" >{{pagos.clave_pago}}</td>
-								
+
 								<td data-label="Monto Adeudo:" >{{pagos.proximo_pago}}</td>
 								<td data-label="Realizar Cobro:" >
 									<a href="{% url 'chargeadd_finance' pagos.id %}" class="la la-file-invoice la-2x"></a>
@@ -39,7 +39,7 @@
 							</tr>
 							{% endif %}
 							{% endfor %}
-							
+
 						</tbody>
 					</table>
 					{% else %}
@@ -52,11 +52,11 @@
 								<a class="paginador" href="?page=1">&laquo; Primero</a>
 								<a class="paginador" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
 							{% endif %}
-					
+
 							<span class="current">
 								Pagina {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
 							</span>
-					
+
 							{% if page_obj.has_next %}
 								<a class="paginador" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
 								<a class="paginador" href="?page={{ page_obj.paginator.num_pages }}">Ultima &raquo;</a>
@@ -68,7 +68,7 @@
 		</div>
 	</div>
 
-   
-	
+
+
 </div>
 {% endblock %}

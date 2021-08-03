@@ -1,4 +1,4 @@
-{% extends 'core/base_finance2.html' %} 
+{% extends 'core/base_finance.html' %} 
 {% load static %}
 {% block title %}Pagos{% endblock %}
 {% block titleheader %}Pagos{% endblock %}
@@ -26,22 +26,22 @@
 					<div class="input-data">
 						<input type="text" disabled value="{{detalle_pago.clave_pago.tipo_pago}}">
 						<div class="underline">
-							
+
 						</div>
 						<label for="">Pago Realizado</label>
 					</div>
 					<div class="input-data">
 						<input type="text" disabled value="{{detalle_pago.clave_pago.monto}}">
 						<div class="underline">
-							
+
 						</div>
 						<label for="">Total Pagado</label>
 					</div>
 				</div>
-				
-					
+
+
 				</div>
-				
+
 					</form>
 				</div>
 			</div>

@@ -1,4 +1,4 @@
-{% extends 'core/base_finance2.html' %} 
+{% extends 'core/base_finance.html' %}
 {% load static %}
 {% block title %}Estudiantes{% endblock %}
 
@@ -13,7 +13,7 @@
 				<h3>Administrar información</h3>
 				<a href="{% url 'studentadd_finance' %}"> Agregar Estudiante <span class="las la-user-plus"></span></a>
 			</div>
-			
+
 
 			<div class="card-body">
 				<div class="table-responsive">
@@ -43,7 +43,7 @@
 								</td>
 							</tr>
 							{% endfor %}
-							
+
 						</tbody>
 					</table>
 				{% else %}
@@ -58,11 +58,11 @@
 						<a class="paginador" href="?page=1">&laquo; Primero</a>
 						<a class="paginador" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
 					{% endif %}
-			
+
 					<span class="current">
 						Pagina {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
 					</span>
-			
+
 					{% if page_obj.has_next %}
 						<a class="paginador" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
 						<a class="paginador" href="?page={{ page_obj.paginator.num_pages }}">Ultima &raquo;</a>
