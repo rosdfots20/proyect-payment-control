@@ -1,4 +1,4 @@
-{% extends 'core/base_student.html' %} 
+{% extends 'core/base_student2.html' %}
 {% load static %}
 {% block title %}Deashboard{% endblock %}
 {% block estiloextras %}
@@ -31,13 +31,13 @@
 						</tr>
 						{% endfor %}
 					</tbody>
-					
+
 				</table>
 				{% else %}
 				<h4>Excluido De Algun Grupo</h4>
 				{% endif %}
 
-				
+
 			<hr>
 			<h3 class="titulo">Adeudos</h3>
 			<div class="contenedor-table">
@@ -61,12 +61,12 @@
 						{% endif %}
 						{% endfor %}
 					</tbody>
-					
+
 				</table>
 				{% else %}
 				<h4>No tienes Adeudos</h4>
 				{% endif %}
-				
+
 
 			</div>
 {% endblock %}
