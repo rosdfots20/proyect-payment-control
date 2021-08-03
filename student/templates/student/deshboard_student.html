@@ -1,72 +1,85 @@
 {% extends 'core/base_student2.html' %}
 {% load static %}
 {% block title %}Deashboard{% endblock %}
-{% block estiloextras %}
-<link rel="stylesheet" href="{% static 'core/css/table.css' %}">
-{% endblock %}
+{% block titleheader %}Deashboard{% endblock %}
+
 {% block content %}
-<h1 class="titulo">Estado De Cuenta</h1>
-			<hr>
-			<h3 class="text-datos">Nombre: {{perfil.nombre}} {{perfil.apellido}}</h3>
-			<h4 class="text-datos">Carrera: {{perfil.clave_carrera.nombre_carrera}} &nbsp; Grado: {{grupoAcade.last.clave_grupo.grado}}  &nbsp; Grupo: {{grupoAcade.last.clave_grupo.grupo}}</h4>
-			<h4 class="text-datos">Estatus: {{perfil.estatus}}</h4>
+<div class="recent-grid">
+	<div class="projects">
+		<div class="card">
+			<div class="card-body">
 
-			<hr>
+				<div class="card-header">
+					<h1 class="titulo">Estado De Cuenta</h1>
+					<hr>
+					<h3 class="text-datos">Nombre: {{perfil.nombre}} {{perfil.apellido}}</h3>
+					<h4 class="text-datos">Carrera: {{perfil.clave_carrera.nombre_carrera}} &nbsp; Grado: {{grupoAcade.last.clave_grupo.grado}}  &nbsp; Grupo: {{grupoAcade.last.clave_grupo.grupo}}</h4>
+					<h4 class="text-datos">Estatus: {{perfil.estatus}}</h4>
+				</div>
 
-			<h3 class="titulo">Historial Academico</h3>
-			<div class="contenedor-table">
-				{% if grupoAcade %}
-				<table border="1">
-					<thead class="encabezado-table">
-						<tr>
-							<th>Grado</th>
-							<th>Grupo</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for i in grupoAcade %}
-						<tr>
-							<td data-label="Grado:" >{{i.clave_grupo.grado}}</td>
-							<td data-label="Grupo:" >{{i.clave_grupo.grupo}}</td>
-						</tr>
-						{% endfor %}
-					</tbody>
+				<div class="card-header">
+					<h3>Historial Academico</h3>
+				</div>
 
-				</table>
-				{% else %}
-				<h4>Excluido De Algun Grupo</h4>
-				{% endif %}
-
-
-			<hr>
-			<h3 class="titulo">Adeudos</h3>
-			<div class="contenedor-table">
-				{% if pagos %}
-				<table border="1">
-					<thead class="encabezado-table">
-						<tr>
-							<th>Pago</th>
-							<th>Adeudo</th>
-							<th>Fecha Plazo</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for i in pagos %}
-						{% if i.estado != "Completado" %}
-						<tr>
-							<td data-label="Descripcion:" >{{i.clave_pago.tipo_pago}}</td>
-							<td data-label="Adeudo:" >{{i.monto_adeudo}}</td>
-							<td data-label="Fecha Plazo:" >{{i.proximo_pago}}</td>
-						</tr>
-						{% endif %}
-						{% endfor %}
-					</tbody>
-
-				</table>
-				{% else %}
-				<h4>No tienes Adeudos</h4>
-				{% endif %}
-
-
+				<div class="table-responsive">
+					{% if grupoAcade %}
+					<table width="100%">
+						<thead>
+							<tr>
+								<th>Grado</th>
+								<th>Grupo</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for i in grupoAcade %}
+							<tr>
+								<td data-label="Grado:" >{{i.clave_grupo.grado}}</td>
+								<td data-label="Grupo:" >{{i.clave_grupo.grupo}}</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+						
+					</table>
+					{% else %}
+					<h4>Excluido De Algun Grupo</h4>
+					{% endif %}
+				</div>
 			</div>
+
+			<div class="card-header">
+				<h3>Administrar Adeudos</h3>
+			</div>
+
+			<div class="card-body">
+				<div class="table-responsive">
+					{% if pagos %}
+					<table width="100%">
+						<thead>
+							<tr>
+								<th>Pago</th>
+								<th>Adeudo</th>
+								<th>Fecha Plazo</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for i in pagos %}
+							{% if i.estado != "Completado" %}
+							<tr>
+								<td data-label="Descripcion:" >{{i.clave_pago.tipo_pago}}</td>
+								<td data-label="Adeudo:" >{{i.monto_adeudo}}</td>
+								<td data-label="Fecha Plazo:" >{{i.proximo_pago}}</td>
+							</tr>
+							{% endif %}
+							{% endfor %}
+						</tbody>
+						
+					</table>
+					{% else %}
+						<h4>No tienes Adeudos</h4>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+		
 {% endblock %}
