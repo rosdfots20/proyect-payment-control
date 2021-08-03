@@ -75,13 +75,35 @@
                 <input type="search" placeholder="Search here">
             </div>
             <div class="user-wrapper">
-                <img src="" width="40px" height="40px" alt="">
+                <img src="{% static 'core/img/avatar.jpg' %}" width="40px" height="40px" alt="">
                 <div>
-                    <h4>Joht doc</h4>
-                    <small>Super admin</small>
+                    <h4>{{perfil.nombre}}</h4>
+                    <small>Finanza</small>
                 </div>
             </div>
         </header>
+        {% if messages %}
+			{% for message in messages %}
+				{% if message.tags == 'success' %}
+					<div class="correct hide">
+						<span class="fas fa-check"></span>
+						<span class="msg">{{message}}</span>
+						<div class="close-btn">
+						  <span class="fas fa-times"></span>
+						</div>
+					</div>
+				{% endif %}
+				{% if message.tags == 'info' %}
+					<div class="alert hide">
+						<span class="fas fa-exclamation-circle"></span>
+						<span class="msg">{{message}}</span>
+						<div class="close-btn">
+						  <span class="fas fa-times"></span>
+						</div>
+					</div>
+				{% endif %}
+			{% endfor %}
+		{% endif %}
         <main>
           {% block content %}{% endblock %}
 

@@ -30,10 +30,9 @@
 							<tr>
 								<td data-label="Matricula:" >{{pagos.clave_alumno.matricula}}</td>
 								<td data-label="Nombre:" >{{pagos.clave_alumno.nombre}}</td>
-								<td data-label="Carrera:" >{{pagos.clave_alumno.clave_carrera.nombre_carrera}}</td>
+								<td data-label="Nombre Pago:" >{{pagos.clave_pago}}</td>
 								
-								<td data-label="Monto Adeudo:" >${{pagos.monto_adeudo}}</td>
-								<td data-label="Limite" >{{pagos.proximo_pago}}</td>
+								<td data-label="Monto Adeudo:" >{{pagos.proximo_pago}}</td>
 								<td data-label="Realizar Cobro:" >
 									<a href="{% url 'chargeadd_finance' pagos.id %}" class="la la-file-invoice la-2x"></a>
 								</td>

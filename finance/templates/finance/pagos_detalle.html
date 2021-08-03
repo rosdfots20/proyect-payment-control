@@ -1,12 +1,12 @@
-{% extends 'core/base_finance.html' %} 
+{% extends 'core/base_finance2.html' %} 
 {% load static %}
 {% block title %}Pagos{% endblock %}
+{% block titleheader %}Pagos{% endblock %}
 {% block estiloextras %}
 <link rel="stylesheet" href="{% static 'core/css/forms-style.css' %}">
 {% endblock %}
+
 {% block content %}
-<h1 class="titulo">Pagos</h1>
-			<hr>
 			<a class="cancelar-pago" href="{% url 'payments_finance' %}">Regresar</a>
 			<div class="container">
 				<form action="#">
