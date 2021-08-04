@@ -1,12 +1,12 @@
 {% extends 'core/base_finance.html' %} 
 {% load static %}
 {% block title %}Pagos{% endblock %}
+{% block titleheader %}Pagos{% endblock %}
 {% block estiloextras %}
 <link rel="stylesheet" href="{% static 'core/css/forms-style.css' %}">
 {% endblock %}
+
 {% block content %}
-<h1 class="titulo">Pagos</h1>
-			<hr>
 			<div class="container">
 				<form method="POST" action="">
 					{% csrf_token %}
@@ -37,13 +37,13 @@
 					<!-- {% for message in messages %}
 					<p id="messages">{{message}}</p>
 					{% endfor %} -->
-					  <div class="form-row submit-btn">	
+					  <div class="form-row submit-btn">
 						  <div class="input-data">
 							  <div class="inner"></div>
 							  <input type="submit" value="Generar Reporte">
 							</div>
 						</div>
-						
+
 					</form>
 				</div>
 			</div>

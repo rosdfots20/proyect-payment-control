@@ -1,83 +1,76 @@
-{% extends 'core/base_finance.html' %} 
+{% extends 'core/base_finance.html' %}
 {% load static %}
 {% block title %}Estudiantes{% endblock %}
-{% block estiloextras %}
-<link rel="stylesheet" href="{% static 'core/css/table.css' %}">
-{% endblock %}
+
+{% block titleheader %}Estudiantes{% endblock %}
+
+
 {% block content %}
-<h1 class="titulo">Estudiantes</h1>
-			<hr>
-			<h2 class="titulo">Administrar Informacion De Los Estudiantes</h2>
-			<a class="cancelar-pago" href="{% url 'studentadd_finance' %}">Agregar Estudiante <i class="fas fa-user-plus"></i></a>
+<div class="recent-grid">
+	<div class="projects">
+		<div class="card">
+			<div class="card-header">
+				<h3>Administrar información</h3>
+				<a href="{% url 'studentadd_finance' %}"> Agregar Estudiante <span class="las la-user-plus"></span></a>
+			</div>
 
-			<div class="contenedor-table">
-				<form action="" method="get">
-					<div class="barra-busqueda">
-						<input type="text" placeholder="Buscar" name="buscar">
-						<button type="submit"><i class="fas fa-search"></i></button>
-					</div>
-				</form>
-			{% if page_obj %}
 
-				<table border="1">
-					<thead class="encabezado-table">
-						<tr>
-							<th>Matricula</th>
-							<th>Nombre</th>
-							<th>Carrera</th>
-							<th>Perfil</th>
-							<!-- <th>Grado</th>
-							<th>Grupo</th> -->
-							<th>Registrar Pago</th>
-						</tr>
-					</thead>
-					<tbody>
-						
+			<div class="card-body">
+				<div class="table-responsive">
+					{% if page_obj %}
+
+					<table width="100%">
+						<thead>
+							<tr>
+								<td>Matricula</td>
+								<td>Nombre</td>
+								<td>Carrera</td>
+								<th>Perfil</th>
+								<th>Registrar pago</th>
+							</tr>
+						</thead>
+						<tbody>
 							{% for alumno in page_obj %}
-								<tr>
-								<td data-label="No.:" >{{alumno.matricula}}</td>
-								<td data-label="Nombre:" >{{alumno.nombre}} {{alumno.apellido}}</td>
-								<td data-label="Carrera:" >{{alumno.clave_carrera.nombre_carrera}}</td>
-								<td data-label="Perfil:" >
-									<a href="{% url 'profile_student' alumno.matricula %}" style="color: white;">
-										Perfil
-										<i class="fas fa-user fa-lg"></i>
-									</a>
+							<tr>
+								<td data-label="Matricula">{{alumno.matricula}}</td>
+								<td data-label="Nombre">{{alumno.nombre}} {{alumno.apellido}}</td>
+								<td data-label="Carrera">{{alumno.clave_carrera.nombre_carrera}}</td>
+								<td data-label="Perfil">
+									<a href="{% url 'profile_student' alumno.matricula %}" class="la la-user la-2x"></a>
 								</td>
-								<!-- <td data-label="Grado:" >{{alumno.grupo}}</td>
-								<td data-label="Grupo:" >{{alumno.grupo}}</td> -->
-								<td data-label="Registrar Pago:" >
-									<a href="{% url 'payadd_finance' alumno.matricula %}" style="color: white;">
-										Nuevo Pago
-										<i class="fas fa-file-invoice-dollar fa-lg"></i>
-									</a>
+								<td data-label="Registrar pago">
+									<a href="{% url 'payadd_finance' alumno.matricula %}" class="la la-file-invoice-dollar la-2x"></a>
 								</td>
-								</tr>
+							</tr>
 							{% endfor %}
-						
-					</tbody>
-					
-				</table>
+
+						</tbody>
+					</table>
 				{% else %}
 					<h1>No Hay Registros De Alumnos</h1>
 				{% endif %}
-
-				<div class="pagination">
-					<span class="step-links">
-						{% if page_obj.has_previous %}
-							<a class="paginador" href="?page=1">&laquo; Primero</a>
-							<a class="paginador" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
-						{% endif %}
-				
-						<span class="current">
-							Pagina {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
-						</span>
-				
-						{% if page_obj.has_next %}
-							<a class="paginador" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
-							<a class="paginador" href="?page={{ page_obj.paginator.num_pages }}">Ultima &raquo;</a>
-						{% endif %}
-					</span>
 				</div>
 			</div>
+
+			<div class="pagination">
+				<span class="step-links">
+					{% if page_obj.has_previous %}
+						<a class="paginador" href="?page=1">&laquo; Primero</a>
+						<a class="paginador" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+					{% endif %}
+
+					<span class="current">
+						Pagina {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+					</span>
+
+					{% if page_obj.has_next %}
+						<a class="paginador" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+						<a class="paginador" href="?page={{ page_obj.paginator.num_pages }}">Ultima &raquo;</a>
+					{% endif %}
+				</span>
+			</div>
+
+		</div>
+	</div>
+</div>
 {% endblock %}
