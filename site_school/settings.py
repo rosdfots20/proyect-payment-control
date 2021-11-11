@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'pwa',
     'finance',
     'student',
     'pagos',
@@ -110,3 +111,25 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+PWA_APP_NAME = "UNIVERSIDAD"
+PWA_APP_DESCRIPTION = "Pagina de Tecnologia"
+PWA_APP_THEME_COLOR = "#3477f5"
+PWA_APP_BACKGROUND_COLOR = "#6699f7"
+PWA_APP_ICONS = [
+    {
+        "src": "/static/core/img/iconoprueba.ico",
+        "sizes": "160x160" 
+    },
+    {
+        "src": "/static/core/img/iconoprueba144x.png",
+        "sizes": "144x144" 
+    }
+]
+
+PWA_APP_ICONS_APPLE = [
+    {
+        "src": "/static/core/img/iconoprueba.ico",
+        "sizes": "160x160" 
+    }
+]
