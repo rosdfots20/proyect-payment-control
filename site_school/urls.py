@@ -14,4 +14,5 @@ urlpatterns = [
     path('logout/', views.logoutSite, name="logout"),
     path('', views.home, name="home"),
     path('password_reset/', views.password_reset, name="reset_password"),
+    path('',include('pwa.urls')),
 ]
