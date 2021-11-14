@@ -1,8 +1,6 @@
 {% load static %}
-
+{% load pwa %}
 <!DOCTYPE html>
-
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,6 +12,7 @@
     <link rel="stylesheet" href="{% static 'core/css/tablas.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/toast.css' %}">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    {% progressive_web_app_meta %}
     {% block estiloextras %}{% endblock %}
 </head>
 <body>
