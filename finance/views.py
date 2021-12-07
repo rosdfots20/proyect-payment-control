@@ -101,9 +101,9 @@ def pagos(request):
 def reporte(request):
     busqueda = request.GET.get('buscar')
     perfil = request.user.finanza
-    pago = Tramite.objects.all()
+    pago = Tramite.objects.filter( Q(estado='En Progreso') | Q(estado='Deuda'))
     if busqueda:
-        pago = Tramite.objects.filter(clave_alumno=busqueda)
+        pago = Tramite.objects.filter(clave_alumno=busqueda).filter( Q(estado='En Progreso') | Q(estado='Deuda'))
     
     paginator = Paginator(pago, 5)
     page_number = request.GET.get('page')
