@@ -114,6 +114,19 @@ def reporte(request):
 @allowed_users(allowed_roles=['finanza'])
 def cambiar_password(request):
     perfil = request.user.finanza
+    user_finanzas = User.objects.get(username=perfil.user)
+    if request.method == 'POST':
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+
+        if str(password1) != str(password2):
+            messages.info(request, f'Las Contraseñas No Coinciden')
+        elif str(password1) == str(password2):
+            user_finanzas.set_password(password1)
+            user_finanzas.save()
+            messages.success(request, f'Contraseña Modificada')
+            return redirect('home_finance')
+
     return render(request,'finance/reset_password.html',{'perfil':perfil})
 
 @login_required(login_url='login')
