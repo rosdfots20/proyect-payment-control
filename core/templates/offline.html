@@ -1,13 +1,15 @@
+{% load static %}
 {% load pwa %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Default offline template</title>
-    <link href="/static/css/django-pwa-app.css" rel="stylesheet">
+    <title>Offline</title>
+    <link rel="stylesheet" href="{% static 'core/css/tablas.css' %}">
 
     {% progressive_web_app_meta %}
 </head>
     <h1>No tienes internet</h1>
+    <img src="{% static 'core/img/wifi_off.svg' %}">
 </body>
 </html>
