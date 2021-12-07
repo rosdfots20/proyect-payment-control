@@ -89,7 +89,7 @@ def pagos(request):
     perfil = request.user.finanza
     pago = Tramite.objects.all()
     if busqueda:
-        pago = Tramite.objects.filter(clave_alumno=busqueda)
+        pago = Tramite.objects.filter( Q(clave_alumno_id=busqueda) | Q(clave_alumno=busqueda)).distinct()
 
     paginator = Paginator(pago, 5)
     page_number = request.GET.get('page')

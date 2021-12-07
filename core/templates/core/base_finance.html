@@ -76,10 +76,9 @@
                 </label>
                 {% block titleheader %} {% endblock %}
             </h2>
-            <div class="search-wrapper">
-                <span class="las la-search"></span>
-                <input type="search" placeholder="Search here">
-            </div>
+            
+            {% block asigsearch %} {% endblock %}
+
             <div class="user-wrapper">
                 <img src="{% static 'core/img/avatar.jpg' %}" width="40px" height="40px" alt="">
                 <div>
